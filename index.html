@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>转盘抽奖</title>
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <link rel="stylesheet" href="css/shuffle.css"/>
+    <script>
+        (function (win,doc) {
+            var metaEl;
+            function setViewport() {
+                var psdWidth = 640;
+                var metaContent = ['width=' + psdWidth,'user-scalable=no'];
+                var scale = window.screen.width / psdWidth;
+                var ua = navigator.userAgent;
+                metaContent.push('minimum-scale=' + scale);
+                metaContent.push('maximum-scale=' + scale);
+                var match = ua.match(/Android (\d+\.\d+)/);
+                if (match){
+                    metaContent.push('target-densitydpi=device-dpi');
+                }
+                metaEl = metaEl || doc.createElement('meta');
+                metaEl.setAttribute('name', 'viewport');
+                metaEl.setAttribute('content',metaContent.join(','));
+                doc.documentElement.firstElementChild.appendChild(metaEl);
+            }
+            setViewport();
+            win.addEventListener('resize',setViewport , false);
+        })(window,document);
+    </script>
+</head>
+<body>
+<section class="wrapper">
+    <div class="label"></div>
+    <div class="pointer"></div>
+</section>
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/shuffle.js"></script>
+</html>
